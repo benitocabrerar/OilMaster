@@ -1,0 +1,12 @@
+Este directorio contiene las siguientes imágenes necesarias para el sitio web:
+
+1. hero-bg.jpg - Imagen de fondo para la sección hero
+2. news1.jpg - Imagen para la primera noticia
+3. news2.jpg - Imagen para la segunda noticia
+4. news3.jpg - Imagen para la tercera noticia
+
+Por favor, reemplace este archivo con imágenes reales relacionadas con la industria petrolera, innovación y tecnología.
+
+Especificaciones recomendadas para las imágenes:
+- hero-bg.jpg: 1920x1080px
+- news*.jpg: 800x600px
