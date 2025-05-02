@@ -31,8 +31,9 @@
 .innovation-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+    gap: 2.5rem; /* Aumentado el espaciado entre tarjetas */
+    padding: 1.5rem; /* Aumentado el padding del contenedor */
+    margin: 0 auto; /* Centrar el contenido */
 }
 
 /* Hacer que innovation-card se vea como news-card */
@@ -40,13 +41,16 @@
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra mejorada */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
     height: 100%;
     position: relative;
-    padding: 1.5rem;
+    padding: 1.75rem; /* Padding aumentado para más espacio interior */
+    margin-bottom: 0.5rem; /* Margen inferior para separación adicional */
+    display: flex; /* Usar flexbox para estructura interna */
+    flex-direction: column; /* Organizar contenido verticalmente */
 }
 
 .innovation-card.visible {
@@ -56,33 +60,36 @@
 
 .innovation-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Sombra más pronunciada en hover */
 }
 
 .innovation-card h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.75rem 0; /* Más espacio después del título */
     color: #333;
     font-size: 1.2rem;
+    line-height: 1.3; /* Mejora en la altura de línea */
 }
 
 .innovation-card p {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.25rem 0; /* Más espacio después del párrafo */
     color: #666;
     font-size: 0.95rem;
+    line-height: 1.5; /* Mejora en la altura de línea */
+    flex-grow: 1; /* Permitir que el párrafo ocupe el espacio disponible */
 }
 
 .innovation-card .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 10px;
+    gap: 8px; /* Más espacio entre etiquetas */
+    margin-top: auto; /* Colocar etiquetas al final de la tarjeta */
 }
 
 .innovation-card .tech-tag {
     background-color: #f8f9fa;
     color: #555;
     font-size: 0.75rem;
-    padding: 3px 8px;
+    padding: 4px 10px; /* Padding aumentado */
     border-radius: 15px;
     border: 1px solid var(--card-accent-color, #ddd);
 }
@@ -120,29 +127,37 @@
     right: 10px;
     background-color: var(--card-accent-color, #007bff);
     color: white;
-    padding: 3px 8px;
+    padding: 4px 10px; /* Padding aumentado */
     border-radius: 15px;
     font-size: 0.75rem;
     z-index: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Añadir sombra sutil */
 }
 
 .innovation-pagination {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem; /* Más espacio antes del botón de paginación */
 }
 
 #load-more-innovations {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 25px;
+    padding: 12px 30px; /* Botón más grande */
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500; /* Texto más prominente */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
 }
 
 #load-more-innovations:hover {
     background-color: #0069d9;
+    transform: translateY(-2px); /* Efecto sutil de elevación */
+}
+
+#load-more-innovations:active {
+    transform: translateY(0); /* Regresar al presionar */
 }
 
 /* Animación de aparición escalonada */
@@ -160,18 +175,43 @@
     display: none;
 }
 
-/* Responsividad */
+/* Asegurar que el contenedor tenga suficiente espacio */
+#innovacion {
+    margin-bottom: 4rem; /* Espacio adicional al final de la sección */
+}
+
+/* Responsividad mejorada */
+@media (max-width: 1200px) {
+    .innovation-content {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .innovation-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
     }
     
     .innovation-filter {
-        gap: 5px;
+        gap: 8px;
+        margin-bottom: 1.5rem;
     }
     
     .filter-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
+    }
+    
+    .innovation-card {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .innovation-content {
+        grid-template-columns: 1fr;
     }
 }
