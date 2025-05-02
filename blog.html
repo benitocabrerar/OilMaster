@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - OilMaster</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6RQlwWvJpXH3DkRQjAA/kPt8nA+/iNcK2B5IXpOlybGf6vXvJ+5Bg5C6FWU1+G8ZT2Hkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <img src="assets/images/logo.png" alt="Logo OilMaster" class="logo">
+            <h1>Blog OilMaster</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="precio.html">Precio WTI</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="index.html#services">Servicios</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección del Blog -->
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h2>Análisis y Tendencias en la Industria Petrolera</h2>
+                <p>Perspectivas técnicas, económicas y estratégicas para profesionales del sector</p>
+            </div>
+        </section>
+
+        <section class="blog-filter">
+            <div class="container">
+                <div class="filter-wrapper">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar artículos...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label>Filtrar por:</label>
+                            <select id="categoryFilter">
+                                <option value="all">Todas las categorías</option>
+                                <option value="produccion">Producción</option>
+                                <option value="economia">Economía</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="sostenibilidad">Sostenibilidad</option>
+                                <option value="innovacion">Innovación</option>
+                                <option value="analisis">Análisis de Mercado</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="dateFilter">
+                                <option value="all">Cualquier fecha</option>
+                                <option value="recent">Más recientes</option>
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="authorFilter">
+                                <option value="all">Todos los autores</option>
+                                <option value="bcabrera">Benito Cabrera</option>
+                                <option value="mtorres">Maria Torres</option>
+                                <option value="jrodriguez">Juan Rodriguez</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-article">
+            <div class="container">
+                <article class="main-article">
+                    <div class="article-image">
+                        <img src="img/blog/crisis-produccion-ecuador.jpg" alt="Producción petrolera en Ecuador">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="category">Producción</span>
+                            <span class="date">30 Abril, 2025</span>
+                            <span class="reading-time"><i class="far fa-clock"></i> 5 min</span>
+                        </div>
+                        <h2>Crisis de producción petrolera en Ecuador 2025: Causas y perspectivas de recuperación</h2>
+                        <p>El sector petrolero ecuatoriano enfrenta su peor crisis en dos décadas, con una producción que ha retrocedido a niveles de 2003. El cierre del bloque ITT, sumado a problemas estructurales de larga data, ha precipitado un escenario que amenaza la estabilidad económica del país. Sin embargo, existen estrategias viables para revertir esta tendencia alarmante...</p>
+                        <a href="blog/crisis-produccion-petrolera-ecuador-2025.html" class="btn-read-more">Leer más</a>
+                        <div class="article-footer">
+                            <div class="author">
+                                <img src="img/authors/benito-cabrera.jpg" alt="Benito Cabrera">
+                                <span>Benito Cabrera</span>
+                            </div>
+                            <div class="share">
+                                <a href="#" title="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" title="Compartir en LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" title="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#" title="Compartir por correo"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="blog-grid">
+            <div class="container">
+                <div class="articles-grid">
+                    <!-- Artículo 2 -->
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="img/blog/impacto-cierre-itt.jpg" alt="Bloque ITT">
+                            <div class="card-category">Economía</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="date">28 Abril, 2025</span>
+                                <span class="reading-time"><i class="far fa-clock"></i> 4 min</span>
+                            </div>
+                            <h3>El impacto del cierre del bloque ITT en la economía ecuatoriana</h3>
+                            <p>Evaluación de las consecuencias económicas y fiscales que se profundizarán en 2025 cuando ya no haya producción del ITT, y las posibles alternativas para mitigar este impacto.</p>
+                            <div class="card-footer">
+                                <a href="blog/impacto-cierre-itt-economia-ecuatoriana.html" class="btn-read">Leer artículo</a>
+                                <div class="author">
+                                    <img src="img/authors/maria-torres.jpg" alt="María Torres">
+                                    <span>María Torres</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 3 -->
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="img/blog/transicion-energetica.jpg" alt="Energías renovables">
+                            <div class="card-category">Sostenibilidad</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="date">25 Abril, 2025</span>
+                                <span class="reading-time"><i class="far fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3>Transición energética en Ecuador: Oportunidades para diversificar la matriz energética</h3>
+                            <p>Explorando cómo Ecuador puede aprovechar su potencial en energías renovables mientras gestiona la dependencia petrolera.</p>
+                            <div class="card-footer">
+                                <a href="blog/transicion-energetica-ecuador.html" class="btn-read">Leer artículo</a>
+                                <div class="author">
+                                    <img src="img/authors/juan-rodriguez.jpg" alt="Juan Rodríguez">
+                                    <span>Juan Rodríguez</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 4 -->
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="img/blog/produccion-estatal-privada.jpg" alt="Comparación producción petrolera">
+                            <div class="card-category">Análisis</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="date">23 Abril, 2025</span>
+                                <span class="reading-time"><i class="far fa-clock"></i> 4 min</span>
+                            </div>
+                            <h3>Análisis comparativo: Producción petrolera estatal vs. privada en Ecuador</h3>
+                            <p>Un estudio sobre la caída en la operación de Petroecuador frente a la creciente producción del sector privado y sus implicaciones.</p>
+                            <div class="card-footer">
+                                <a href="blog/analisis-comparativo-produccion-estatal-privada.html" class="btn-read">Leer artículo</a>
+                                <div class="author">
+                                    <img src="img/authors/benito-cabrera.jpg" alt="Benito Cabrera">
+                                    <span>Benito Cabrera</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 5 -->
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="img/blog/desafios-petroecuador.jpg" alt="Petroecuador">
+                            <div class="card-category">Estrategia</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="date">20 Abril, 2025</span>
+                                <span class="reading-time"><i class="far fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3>Desafíos de Petroecuador en 2025: Reestructuración y estrategias de recuperación</h3>
+                            <p>Examinando los retos que enfrenta la principal petrolera del país y las reformas necesarias para mejorar su eficiencia.</p>
+                            <div class="card-footer">
+                                <a href="blog/desafios-petroecuador-2025.html" class="btn-read">Leer artículo</a>
+                                <div class="author">
+                                    <img src="img/authors/maria-torres.jpg" alt="María Torres">
+                                    <span>María Torres</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 6 -->
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="img/blog/tendencias-precio-petroleo.jpg" alt="Tendencias de precios">
+                            <div class="card-category">Mercado</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span class="date">18 Abril, 2025</span>
+                                <span class="reading-time"><i class="far fa-clock"></i> 4 min</span>
+                            </div>
+                            <h3>Tendencias globales del precio del petróleo para 2025-2026 y su impacto en Ecuador</h3>
+                            <p>Análisis de las proyecciones internacionales que indican una tendencia bajista con un promedio esperado para 2025 de 73 dólares el barril Brent.</p>
+                            <div class="card-footer">
+                                <a href="blog/tendencias-globales-precio-petroleo.html" class="btn-read">Leer artículo</a>
+                                <div class="author">
+                                    <img src="img/authors/juan-rodriguez.jpg" alt="Juan Rodríguez">
+                                    <span>Juan Rodríguez</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="blog-pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span>...</span>
+                    <a href="#">Siguiente &raquo;</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Suscríbete a nuestro boletín</h2>
+                    <p>Recibe los análisis más actualizados y tendencias del sector petrolero directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>OilMaster</h2>
+                    <p>Soluciones tecnológicas para la industria petrolera</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="precio.html">Precio WTI</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#services">Servicios</a></li>
+                        <li><a href="index.html#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. 6 de Diciembre y La Niña, Quito, Ecuador</p>
+                    <p><i class="fas fa-phone"></i> +593 99 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@oilmaster.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OilMaster. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="js/blog.js"></script>
+</body>
+</html>
