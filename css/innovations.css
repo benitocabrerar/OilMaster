@@ -1,0 +1,190 @@
+/* Estilos para la sección de innovación */
+.innovation-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #e9ecef;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.innovation-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.innovation-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 25px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.innovation-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.innovation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.innovation-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--card-accent-color, #007bff);
+}
+
+.innovation-card .card-icon {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: var(--card-accent-color, #007bff);
+}
+
+.innovation-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.innovation-card p {
+    color: #666;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.innovation-card .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.innovation-card .tech-tag {
+    background-color: #f8f9fa;
+    color: #555;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+.innovation-card .learn-more {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.innovation-card .learn-more a {
+    color: var(--card-accent-color, #007bff);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+}
+
+.innovation-card .learn-more a:hover {
+    text-decoration: underline;
+}
+
+.innovation-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#load-more-innovations {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#load-more-innovations:hover {
+    background-color: #0069d9;
+}
+
+/* Efectos visuales para tarjetas */
+.innovation-card.card-desarrollo {
+    --card-accent-color: #4CAF50;
+}
+
+.innovation-card.card-ia {
+    --card-accent-color: #9C27B0;
+}
+
+.innovation-card.card-energia {
+    --card-accent-color: #FF9800;
+}
+
+.innovation-card.card-automatizacion {
+    --card-accent-color: #F44336;
+}
+
+.innovation-card.card-digital {
+    --card-accent-color: #2196F3;
+}
+
+/* Animación de aparición escalonada */
+.innovation-card {
+    animation-fill-mode: both;
+}
+
+.innovation-card:nth-child(1) { animation-delay: 0.1s; }
+.innovation-card:nth-child(2) { animation-delay: 0.2s; }
+.innovation-card:nth-child(3) { animation-delay: 0.3s; }
+.innovation-card:nth-child(4) { animation-delay: 0.4s; }
+.innovation-card:nth-child(5) { animation-delay: 0.5s; }
+.innovation-card:nth-child(6) { animation-delay: 0.6s; }
+.innovation-card:nth-child(7) { animation-delay: 0.7s; }
+.innovation-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .innovation-content {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .innovation-filter {
+        gap: 5px;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
