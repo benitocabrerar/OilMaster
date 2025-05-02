@@ -46,6 +46,7 @@
     transform: translateY(20px);
     height: 100%;
     position: relative;
+    padding: 1.5rem;
 }
 
 .innovation-card.visible {
@@ -56,27 +57,6 @@
 .innovation-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.innovation-card .card-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-    background-color: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.innovation-card .card-image .card-icon {
-    font-size: 5rem;
-    color: var(--card-accent-color, #007bff);
-    opacity: 0.8;
-}
-
-.innovation-card .card-content {
-    padding: 1rem;
 }
 
 .innovation-card h3 {
@@ -110,22 +90,27 @@
 /* Categorías de colores */
 .innovation-card.card-desarrollo {
     --card-accent-color: #4CAF50;
+    border-left: 4px solid #4CAF50;
 }
 
 .innovation-card.card-ia {
     --card-accent-color: #9C27B0;
+    border-left: 4px solid #9C27B0;
 }
 
 .innovation-card.card-energia {
     --card-accent-color: #FF9800;
+    border-left: 4px solid #FF9800;
 }
 
 .innovation-card.card-automatizacion {
     --card-accent-color: #F44336;
+    border-left: 4px solid #F44336;
 }
 
 .innovation-card.card-digital {
     --card-accent-color: #2196F3;
+    border-left: 4px solid #2196F3;
 }
 
 /* Indicador de categoría */
@@ -169,22 +154,11 @@
 .innovation-card:nth-child(2) { animation-delay: 0.15s; }
 .innovation-card:nth-child(3) { animation-delay: 0.2s; }
 .innovation-card:nth-child(4) { animation-delay: 0.25s; }
-.innovation-card:nth-child(5) { animation-delay: 0.3s; }
-.innovation-card:nth-child(6) { animation-delay: 0.35s; }
-.innovation-card:nth-child(7) { animation-delay: 0.4s; }
-.innovation-card:nth-child(8) { animation-delay: 0.45s; }
-.innovation-card:nth-child(9) { animation-delay: 0.5s; }
-.innovation-card:nth-child(10) { animation-delay: 0.55s; }
-.innovation-card:nth-child(11) { animation-delay: 0.6s; }
-.innovation-card:nth-child(12) { animation-delay: 0.65s; }
-.innovation-card:nth-child(13) { animation-delay: 0.7s; }
-.innovation-card:nth-child(14) { animation-delay: 0.75s; }
-.innovation-card:nth-child(15) { animation-delay: 0.8s; }
-.innovation-card:nth-child(16) { animation-delay: 0.85s; }
-.innovation-card:nth-child(17) { animation-delay: 0.9s; }
-.innovation-card:nth-child(18) { animation-delay: 0.95s; }
-.innovation-card:nth-child(19) { animation-delay: 1s; }
-.innovation-card:nth-child(20) { animation-delay: 1.05s; }
+
+/* Estilos específicos para tarjetas cuando están ocultas por el filtro */
+.innovation-card.hidden {
+    display: none;
+}
 
 /* Responsividad */
 @media (max-width: 768px) {
