@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OilMaster - Innovación en la Industria Petrolera</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Estilos para la sección de innovación -->
+    <link rel="stylesheet" href="css/innovations.css">
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6RQlwWvJpXH3DkRQjAA/kPt8nA+/iNcK2B5IXpOlybGf6vXvJ+5Bg5C6FWU1+G8ZT2Hkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="main-header">
@@ -48,23 +52,19 @@
 
         <section id="innovacion" class="section-container">
             <h2>Innovación</h2>
+            <div class="innovation-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="desarrollo">Desarrollo</button>
+                <button class="filter-btn" data-filter="ia">Inteligencia Artificial</button>
+                <button class="filter-btn" data-filter="energia">Energías</button>
+                <button class="filter-btn" data-filter="automatizacion">Automatización</button>
+                <button class="filter-btn" data-filter="digital">Transformación Digital</button>
+            </div>
             <div class="innovation-content">
-                <div class="innovation-card">
-                    <h3>Desarrollo Tecnológico</h3>
-                    <p>Implementación de soluciones digitales avanzadas para la industria petrolera y optimización de procesos.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3>Inteligencia Artificial</h3>
-                    <p>Aplicación de IA y machine learning para predicción de mantenimiento y análisis de datos petroleros.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3>Energías Renovables</h3>
-                    <p>Integración de tecnologías sostenibles en la industria petrolera para reducir el impacto ambiental.</p>
-                </div>
-                <div class="innovation-card">
-                    <h3>Automatización Industrial</h3>
-                    <p>Sistemas automáticos y robóticos para mejorar la eficiencia y seguridad en las operaciones.</p>
-                </div>
+                <!-- El contenido se cargará dinámicamente desde JavaScript -->
+            </div>
+            <div class="innovation-pagination">
+                <button id="load-more-innovations" class="btn">Cargar Más Innovaciones</button>
             </div>
         </section>
 
@@ -112,5 +112,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Script para la sección de innovación -->
+    <script src="js/innovations.js"></script>
 </body>
 </html>
