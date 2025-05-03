@@ -1,305 +1,220 @@
-// JavaScript para la funcionalidad de la sección de blog
-
+// JavaScript para la sección Blog
 document.addEventListener('DOMContentLoaded', function() {
-    // Funcionalidad para el menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            this.classList.toggle('active');
-        });
-    }
-
-    // Funcionalidad del filtro de búsqueda
+    // Funcionalidad de filtro y búsqueda
     const searchInput = document.getElementById('searchInput');
     const categoryFilter = document.getElementById('categoryFilter');
     const dateFilter = document.getElementById('dateFilter');
     const authorFilter = document.getElementById('authorFilter');
+    const tagsFilter = document.getElementById('tagsFilter');
     const blogCards = document.querySelectorAll('.blog-card');
+    const featuredArticle = document.querySelector('.main-article');
     
-    // Función para filtrar los artículos
-    function filterArticles() {
+    // Función para filtrar las tarjetas del blog
+    function filterBlogCards() {
         const searchTerm = searchInput.value.toLowerCase();
         const category = categoryFilter.value;
         const date = dateFilter.value;
         const author = authorFilter.value;
+        const tag = tagsFilter ? tagsFilter.value : 'all';
         
+        // Filtrar las tarjetas del blog según los criterios seleccionados
         blogCards.forEach(card => {
-            const title = card.querySelector('h3').innerText.toLowerCase();
-            const excerpt = card.querySelector('p').innerText.toLowerCase();
-            const cardCategory = card.querySelector('.card-category').innerText.toLowerCase();
-            const cardDate = card.querySelector('.date').innerText.toLowerCase();
-            const cardAuthor = card.querySelector('.author span').innerText.toLowerCase();
+            const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+            const cardCategory = card.querySelector('.card-category').textContent.toLowerCase();
+            const cardDate = card.querySelector('.date').textContent.toLowerCase();
+            const cardAuthor = card.querySelector('.author span').textContent.toLowerCase();
+            const cardTags = card.dataset.tags ? card.dataset.tags.toLowerCase() : '';
             
-            // Filtro de búsqueda
-            const matchesSearch = searchTerm === '' || 
-                                title.includes(searchTerm) || 
-                                excerpt.includes(searchTerm);
+            const matchesSearch = cardTitle.includes(searchTerm);
+            const matchesCategory = category === 'all' || cardCategory === category.toLowerCase();
+            const matchesDate = date === 'all' || cardDate.includes(date);
+            const matchesAuthor = author === 'all' || cardAuthor === author.toLowerCase();
+            const matchesTag = tag === 'all' || (cardTags && cardTags.includes(tag.toLowerCase()));
             
-            // Filtro de categoría
-            const matchesCategory = category === 'all' || 
-                                   cardCategory.includes(category.toLowerCase());
-            
-            // Filtro de fecha
-            let matchesDate = true;
-            if (date !== 'all') {
-                if (date === 'recent' && !cardDate.includes('abril')) {
-                    matchesDate = false;
-                } else if (date === '2025' && !cardDate.includes('2025')) {
-                    matchesDate = false;
-                } else if (date === '2024' && !cardDate.includes('2024')) {
-                    matchesDate = false;
-                }
-            }
-            
-            // Filtro de autor
-            const matchesAuthor = author === 'all' || 
-                                 cardAuthor.toLowerCase().includes(author === 'bcabrera' ? 'benito' : 
-                                                                 author === 'mtorres' ? 'maría' : 
-                                                                 author === 'jrodriguez' ? 'juan' : '');
-            
-            // Mostrar u ocultar la tarjeta
-            if (matchesSearch && matchesCategory && matchesDate && matchesAuthor) {
-                card.style.display = 'block';
-                // Agregar animación de entrada
-                card.style.animation = 'fadeInUp 0.5s ease forwards';
+            if (matchesSearch && matchesCategory && matchesDate && matchesAuthor && matchesTag) {
+                card.style.display = 'flex';
             } else {
                 card.style.display = 'none';
             }
         });
+        
+        // Verificar si no hay resultados y mostrar mensaje
+        const visibleCards = document.querySelectorAll('.blog-card[style="display: flex;"]');
+        const noResultsMsg = document.querySelector('.no-results-message');
+        
+        if (visibleCards.length === 0) {
+            if (!noResultsMsg) {
+                const message = document.createElement('div');
+                message.className = 'no-results-message';
+                message.innerHTML = `<p>No se encontraron artículos que coincidan con tu búsqueda.</p>`;
+                document.querySelector('.articles-grid').appendChild(message);
+            }
+        } else if (noResultsMsg) {
+            noResultsMsg.remove();
+        }
     }
     
-    // Eventos para los filtros
-    if (searchInput) {
-        searchInput.addEventListener('input', filterArticles);
-    }
-    if (categoryFilter) {
-        categoryFilter.addEventListener('change', filterArticles);
-    }
-    if (dateFilter) {
-        dateFilter.addEventListener('change', filterArticles);
-    }
-    if (authorFilter) {
-        authorFilter.addEventListener('change', filterArticles);
-    }
+    // Asignar eventos a los controles de filtro
+    if (searchInput) searchInput.addEventListener('input', filterBlogCards);
+    if (categoryFilter) categoryFilter.addEventListener('change', filterBlogCards);
+    if (dateFilter) dateFilter.addEventListener('change', filterBlogCards);
+    if (authorFilter) authorFilter.addEventListener('change', filterBlogCards);
+    if (tagsFilter) tagsFilter.addEventListener('change', filterBlogCards);
 
     // Funcionalidad para compartir en redes sociales
-    const shareButtons = document.querySelectorAll('.share a, .article-share-button');
+    const shareButtons = document.querySelectorAll('.share a');
     
     shareButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Obtener los datos del artículo
-            const articleTitle = document.querySelector('.article-title') ? 
-                                document.querySelector('.article-title').innerText : 
-                                (document.querySelector('.article-page-title') ? 
-                                 document.querySelector('.article-page-title').innerText : 'Artículo OilMaster');
-            const articleUrl = window.location.href;
+            const url = window.location.href;
+            const title = document.title;
             
-            // Detectar la red social
-            const socialNetwork = this.getAttribute('data-social') || 
-                                (this.querySelector('i.fa-twitter') ? 'twitter' : 
-                                 this.querySelector('i.fa-facebook-f') ? 'facebook' : 
-                                 this.querySelector('i.fa-linkedin-in') ? 'linkedin' : 
-                                 this.querySelector('i.fa-whatsapp') ? 'whatsapp' : 'email');
-            
-            // URLs para compartir
-            let shareUrl;
-            
-            switch(socialNetwork) {
-                case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(articleTitle)}&url=${encodeURIComponent(articleUrl)}`;
-                    break;
-                case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`;
-                    break;
-                case 'linkedin':
-                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`;
-                    break;
-                case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${encodeURIComponent(articleTitle + ' ' + articleUrl)}`;
-                    break;
-                case 'email':
-                    shareUrl = `mailto:?subject=${encodeURIComponent(articleTitle)}&body=${encodeURIComponent(articleUrl)}`;
-                    break;
-            }
-            
-            // Abrir ventana de compartir
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
+            if (this.title.includes('Twitter')) {
+                window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank');
+            } else if (this.title.includes('LinkedIn')) {
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+            } else if (this.title.includes('WhatsApp')) {
+                window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`, '_blank');
+            } else if (this.title.includes('correo')) {
+                window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
             }
         });
     });
 
-    // Animación al hacer scroll
+    // Despliegue de artículos al hacer clic en las tarjetas
+    const articleCards = document.querySelectorAll('.blog-card');
+    
+    articleCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Evitar navegación si se hace clic en el botón de leer o en los enlaces de autor/compartir
+            if (!e.target.closest('.btn-read') && !e.target.closest('.author') && !e.target.closest('.share')) {
+                const articleUrl = this.querySelector('.btn-read').getAttribute('href');
+                if (articleUrl) {
+                    // Desplazar el artículo expandido al principio
+                    const articleContent = document.querySelector('#expanded-article');
+                    if (articleContent) {
+                        articleContent.innerHTML = '<div class="loading-spinner"></div>';
+                        articleContent.style.display = 'block';
+                        
+                        // Simular carga del contenido (en producción se haría con AJAX)
+                        setTimeout(() => {
+                            articleContent.innerHTML = this.getAttribute('data-full-content');
+                            window.scrollTo({
+                                top: articleContent.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }, 500);
+                    }
+                }
+            }
+        });
+    });
+
+    // Animación al cargar la página
     function animateOnScroll() {
-        const elements = document.querySelectorAll('.blog-card, .featured-article, .newsletter-content');
-        
+        const elements = document.querySelectorAll('.blog-card, .main-article');
         elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-            
-            if (elementPosition < screenPosition) {
-                element.classList.add('animate');
+            const position = element.getBoundingClientRect();
+            // Si el elemento está en el viewport
+            if (position.top < window.innerHeight && position.bottom >= 0) {
+                element.classList.add('animate-in');
             }
         });
     }
     
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Activar al cargar la página
-
-    // Botón de volver arriba
-    const scrollTopBtn = document.createElement('div');
-    scrollTopBtn.className = 'scroll-top-btn';
-    scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    document.body.appendChild(scrollTopBtn);
+    animateOnScroll(); // Animar elementos visibles al cargar
     
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Formulario de suscripción al newsletter
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    // Modo oscuro/claro
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
             
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value;
-            
-            // Aquí se podría agregar la lógica para enviar el email al servidor
-            // Por ahora, solo mostramos un mensaje de éxito
-            
-            // Crear elemento de mensaje
-            const message = document.createElement('div');
-            message.className = 'success-message';
-            message.textContent = '¡Gracias por suscribirte! Pronto recibirás nuestras actualizaciones.';
-            message.style.color = '#2ecc71';
-            message.style.marginTop = '15px';
-            message.style.fontWeight = '500';
-            
-            // Limpiar mensajes anteriores
-            const oldMessage = newsletterForm.querySelector('.success-message');
-            if (oldMessage) {
-                oldMessage.remove();
+            // Guardar preferencia en localStorage
+            if (document.body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             }
-            
-            // Agregar nuevo mensaje
-            newsletterForm.appendChild(message);
-            
-            // Limpiar el campo
-            emailInput.value = '';
         });
-    }
-
-    // Detectar tema oscuro del sistema
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    if (prefersDarkScheme.matches) {
-        document.body.classList.add('dark-mode');
-    }
-    
-    // Botón para cambiar tema
-    const darkModeToggle = document.createElement('div');
-    darkModeToggle.className = 'dark-mode-toggle';
-    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    document.body.appendChild(darkModeToggle);
-    
-    darkModeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
         
-        if (document.body.classList.contains('dark-mode')) {
-            this.innerHTML = '<i class="fas fa-sun"></i>';
+        // Verificar tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         } else {
-            this.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-    });
-
-    // Tabla de contenidos para artículos individuales
-    const articleContent = document.querySelector('.article-page-content');
-    
-    if (articleContent) {
-        const headings = articleContent.querySelectorAll('h2, h3');
-        
-        if (headings.length > 2) {
-            // Crear contenedor de tabla de contenidos
-            const tocContainer = document.createElement('div');
-            tocContainer.className = 'table-of-contents';
-            tocContainer.innerHTML = '<h3>Contenido del artículo</h3><ul></ul>';
-            
-            const tocList = tocContainer.querySelector('ul');
-            
-            // Agregar ID a los encabezados si no lo tienen
-            headings.forEach((heading, index) => {
-                if (!heading.id) {
-                    heading.id = 'heading-' + index;
-                }
-                
-                const listItem = document.createElement('li');
-                listItem.className = heading.tagName.toLowerCase();
-                
-                const link = document.createElement('a');
-                link.href = '#' + heading.id;
-                link.textContent = heading.textContent;
-                
-                listItem.appendChild(link);
-                tocList.appendChild(listItem);
-                
-                // Manejar clic en enlaces internos
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetHeading = document.querySelector(this.getAttribute('href'));
-                    const headerOffset = 100;
-                    const elementPosition = targetHeading.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Insertar la tabla de contenidos al inicio del artículo
-            articleContent.insertBefore(tocContainer, articleContent.firstChild);
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
     }
 
-    // Estimación del tiempo de lectura
+    // Tiempo de lectura estimado
     function calculateReadingTime() {
-        const articleContent = document.querySelector('.article-page-content');
-        
-        if (articleContent) {
-            const text = articleContent.textContent;
+        const articles = document.querySelectorAll('.article-page-content');
+        articles.forEach(article => {
+            const text = article.textContent;
             const wordCount = text.split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / 200); // 200 palabras por minuto
             
-            // Asumiendo una velocidad de lectura de 200 palabras por minuto
-            const readingTime = Math.ceil(wordCount / 200);
-            
-            // Actualizar el elemento de tiempo de lectura
-            const readingTimeElement = document.querySelector('.reading-time');
-            if (readingTimeElement) {
-                readingTimeElement.innerHTML = `<i class="far fa-clock"></i> ${readingTime} min de lectura`;
+            const timeElement = document.querySelector('.article-reading-time');
+            if (timeElement) {
+                timeElement.textContent = `${readingTime} min de lectura`;
             }
-        }
+        });
     }
     
-    // Ejecutar cálculo de tiempo de lectura
     calculateReadingTime();
+    
+    // Mostrar menú de filtros en móviles
+    const filterToggle = document.getElementById('filter-toggle');
+    const filterControls = document.querySelector('.filter-controls');
+    
+    if (filterToggle && filterControls) {
+        filterToggle.addEventListener('click', function() {
+            filterControls.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    }
+});
+
+// Funciones para analíticas
+function trackArticleView(articleId, title) {
+    // Aquí se integraría con Google Analytics o similar
+    console.log(`Artículo visto: ${title} (ID: ${articleId})`);
+}
+
+function trackShareEvent(platform, articleId) {
+    // Registro de evento de compartir
+    console.log(`Artículo compartido en ${platform} (ID: ${articleId})`);
+}
+
+// Cargar imágenes de forma lazy
+document.addEventListener('DOMContentLoaded', function() {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback para navegadores sin soporte
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+        });
+    }
 });
