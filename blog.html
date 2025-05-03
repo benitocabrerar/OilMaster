@@ -3,349 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OilMaster Blog - Tendencias y Análisis de la Industria Petrolera</title>
+    <title>Blog - OilMaster | Análisis Petrolero Profesional</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Análisis profesional del sector petrolero global: tendencias, estrategias gerenciales, perspectivas técnicas y económicas para líderes de la industria.">
+    <meta name="keywords" content="petróleo, ecuador, crisis petrolera, industria petrolera, producción petrolera, gerencia petrolera, economía petrolera">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Blog OilMaster | Análisis Petrolero Profesional">
+    <meta property="og:description" content="Análisis experto del sector petrolero: tendencias, estrategias gerenciales y perspectivas económicas de la industria.">
+    <meta property="og:image" content="img/blog/blog-social-image.jpg">
+    <meta property="og:url" content="https://benitocabrerar.github.io/OilMaster/blog.html">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome para Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6RQlwWvJpXH3DkRQjAA/kPt8nA+/iNcK2B5IXpOlybGf6vXvJ+5Bg5C6FWU1+G8ZT2Hkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/blog-enhanced.css">
 </head>
 <body>
+
     <!-- Encabezado -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo">
-                <h1>OilMaster</h1>
+    <header class="enhanced-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="assets/images/logo.png" alt="Logo OilMaster" class="logo">
+                    <div class="site-title">
+                        <h1>BLOG<span class="highlight">MASTER</span></h1>
+                        <p class="tagline">Perspectivas Estratégicas del Sector Petrolero</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="precio.html">Precio WTI</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="index.html#services">Servicios</a></li>
+                        <li><a href="index.html#contact">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="precio.html">Precio WTI</a></li>
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="index.html#contact">Contacto</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section id="blog-hero" class="blog-hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="bounce-in">OilMaster <span class="highlight">Blog</span></h1>
-            <p class="fade-in">Análisis profundo, tendencias y perspectivas de la industria petrolera nacional y global</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Filter Bar -->
-        <div class="filter-bar">
-            <div class="filter-group">
-                <span class="filter-label">Filtrar por:</span>
-                <select class="filter-select" id="category-filter">
-                    <option value="all">Todas las categorías</option>
-                    <option value="ecuador">Industria Ecuatoriana</option>
-                    <option value="global">Mercado Global</option>
-                    <option value="tecnologia">Tecnología e Innovación</option>
-                    <option value="economia">Economía y Finanzas</option>
-                    <option value="sostenibilidad">Sostenibilidad</option>
-                </select>
-                <select class="filter-select" id="date-filter">
-                    <option value="all">Todas las fechas</option>
-                    <option value="week">Última semana</option>
-                    <option value="month">Último mes</option>
-                    <option value="quarter">Último trimestre</option>
-                    <option value="year">Último año</option>
-                </select>
-                <select class="filter-select" id="author-filter">
-                    <option value="all">Todos los autores</option>
-                    <option value="carlos-mendez">Carlos Méndez</option>
-                    <option value="ana-rivera">Ana Rivera</option>
-                    <option value="javier-torres">Javier Torres</option>
-                    <option value="lucia-andrade">Lucía Andrade</option>
-                    <option value="miguel-delgado">Miguel Delgado</option>
-                </select>
-            </div>
-            <div class="search-container">
-                <input type="text" class="filter-search" placeholder="Buscar artículos...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
-
-        <!-- Featured Article -->
-        <article class="featured-article" id="featured-article">
-            <div class="featured-tag">Destacado</div>
-            <div class="featured-content">
-                <div class="featured-heading">
-                    <div class="article-categories">
-                        <span class="category-tag">Ecuador</span>
-                        <span class="category-tag">Producción</span>
-                        <span class="category-tag">Crisis</span>
-                    </div>
-                </div>
-                <div class="article-meta">
-                    <span class="meta-item"><i class="fas fa-user"></i> Carlos Méndez</span>
-                    <span class="meta-item"><i class="fas fa-calendar"></i> Mayo 2, 2025</span>
-                    <span class="meta-item"><i class="fas fa-clock"></i> 5 min de lectura</span>
-                    <span class="meta-item"><i class="fas fa-eye"></i> 1,247 vistas</span>
-                </div>
-                <h2 class="article-title">Crisis de producción petrolera en Ecuador 2025: Causas y perspectivas de recuperación</h2>
-                <p class="article-excerpt"><span class="bigger-text highlight">Ecuador enfrenta su peor crisis petrolera en décadas</span>, con niveles de producción equivalentes a los de 2003. El cierre del bloque ITT, la falta de inversión y problemas estructurales en Petroecuador han generado una tormenta perfecta que amenaza la estabilidad fiscal del país. Este análisis revela las causas profundas de la crisis y propone soluciones estratégicas para recuperar la productividad del sector.</p>
-                <a href="#" class="read-more" onclick="openArticle('article-1')">Leer artículo completo</a>
-                <div class="share-bar">
-                    <span class="share-text">Compartir:</span>
-                    <div class="social-share">
-                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-icon email"><i class="fas fa-envelope"></i></a>
+    <!-- Sección del Blog -->
+    <main>
+        <section class="blog-hero enhanced-hero" data-aos="fade">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="mega-title">ANÁLISIS <span class="highlight">PETROLERO</span></h2>
+                    <p class="hero-subtitle">Perspectivas técnicas, económicas y estratégicas para líderes de la industria</p>
+                    <div class="hero-cta">
+                        <a href="#featured-article" class="btn-primary">Leer artículo destacado</a>
+                        <a href="#all-articles" class="btn-secondary">Ver todos los artículos</a>
                     </div>
                 </div>
             </div>
-        </article>
+            <div class="hero-overlay"></div>
+            <div class="hero-particles"></div>
+        </section>
 
-        <!-- Articles Grid -->
-        <section class="articles-section">
-            <h2 class="section-title">Artículos recientes</h2>
-            
-            <div class="articles-grid" id="articles-grid">
-                <!-- Card 1 -->
-                <article class="article-card" id="article-1">
-                    <div class="card-header">
-                        <div class="card-category">Ecuador</div>
-                        <h3 class="card-title">El impacto del cierre del bloque ITT en la economía ecuatoriana</h3>
+        <section class="blog-filter enhanced-filter" data-aos="fade-up">
+            <div class="container">
+                <div class="filter-wrapper">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar análisis, tendencias, crisis...">
+                        <button><i class="fas fa-search"></i></button>
                     </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Ana Rivera</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 28, 2025</span>
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label>Categoría</label>
+                            <select id="categoryFilter">
+                                <option value="all">Todas las categorías</option>
+                                <option value="produccion">Producción</option>
+                                <option value="economia">Economía</option>
+                                <option value="tecnologia">Tecnología</option>
+                                <option value="sostenibilidad">Sostenibilidad</option>
+                                <option value="geopolitica">Geopolítica</option>
+                                <option value="analisis">Análisis de Mercado</option>
+                                <option value="estrategia">Estrategia</option>
+                                <option value="gerencia">Gerencia</option>
+                            </select>
                         </div>
-                        <p class="card-excerpt">La decisión de cerrar el bloque ITT ha generado un vacío productivo de 58,000 barriles diarios que impacta directamente en los ingresos fiscales. Este análisis evalúa las repercusiones económicas y las alternativas para compensar la pérdida de ingresos.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 4 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-1')">Leer más <i class="fas fa-arrow-right"></i></a>
+                        <div class="filter-group">
+                            <label>Fecha</label>
+                            <select id="dateFilter">
+                                <option value="all">Cualquier fecha</option>
+                                <option value="today">Hoy</option>
+                                <option value="week">Esta semana</option>
+                                <option value="month">Este mes</option>
+                                <option value="q2-2025">Q2 2025</option>
+                                <option value="q1-2025">Q1 2025</option>
+                                <option value="2024">2024</option>
+                            </select>
                         </div>
-                    </div>
-                </article>
-
-                <!-- Card 2 -->
-                <article class="article-card" id="article-2">
-                    <div class="card-header">
-                        <div class="card-category">Tecnología</div>
-                        <h3 class="card-title">Transformación digital en la industria petrolera ecuatoriana</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Javier Torres</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 25, 2025</span>
+                        <div class="filter-group">
+                            <label>Autor</label>
+                            <select id="authorFilter">
+                                <option value="all">Todos los autores</option>
+                                <option value="bcabrera">Benito Cabrera</option>
+                                <option value="mtorres">María Torres</option>
+                                <option value="jrodriguez">Juan Rodríguez</option>
+                                <option value="alopez">Ana López</option>
+                                <option value="cmendez">Carlos Méndez</option>
+                            </select>
                         </div>
-                        <p class="card-excerpt">La digitalización está revolucionando la forma en que operan las empresas petroleras a nivel mundial. Descubre cómo Ecuador puede implementar estas tecnologías para optimizar operaciones y reducir costos en un entorno desafiante.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 5 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-2')">Leer más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="article-card" id="article-3">
-                    <div class="card-header">
-                        <div class="card-category">Global</div>
-                        <h3 class="card-title">Tendencias globales del precio del petróleo para 2025-2026</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Lucía Andrade</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 22, 2025</span>
-                        </div>
-                        <p class="card-excerpt">Las proyecciones indican una tendencia bajista en los precios del petróleo para los próximos años. Este análisis examina los factores que están configurando el mercado global y cómo Ecuador debe prepararse para este escenario.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 5 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-3')">Leer más <i class="fas fa-arrow-right"></i></a>
+                        <div class="filter-group">
+                            <label>Impacto</label>
+                            <select id="impactFilter">
+                                <option value="all">Todos</option>
+                                <option value="global">Global</option>
+                                <option value="regional">Regional</option>
+                                <option value="latinoamerica">Latinoamérica</option>
+                                <option value="ecuador">Ecuador</option>
+                            </select>
                         </div>
                     </div>
-                </article>
-
-                <!-- Card 4 -->
-                <article class="article-card" id="article-4">
-                    <div class="card-header">
-                        <div class="card-category">Economía</div>
-                        <h3 class="card-title">Inversión privada en el sector petrolero: Oportunidades y desafíos</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Miguel Delgado</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 20, 2025</span>
-                        </div>
-                        <p class="card-excerpt">Ecuador necesita atraer inversión privada para alcanzar su objetivo de incrementar la producción. Analizamos el entorno regulatorio actual y las reformas necesarias para hacer al país más atractivo para inversionistas.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 4 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-4')">Leer más <i class="fas fa-arrow-right"></i></a>
+                    <div class="filter-tags">
+                        <div class="filter-tag-header">Temas populares:</div>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag" data-filter="crisis">Crisis</a>
+                            <a href="#" class="tag" data-filter="itt">ITT</a>
+                            <a href="#" class="tag" data-filter="petroecuador">Petroecuador</a>
+                            <a href="#" class="tag" data-filter="transicion">Transición energética</a>
+                            <a href="#" class="tag" data-filter="tendencias">Tendencias</a>
+                            <a href="#" class="tag" data-filter="precios">Precios</a>
+                            <a href="#" class="tag" data-filter="produccion">Producción</a>
+                            <a href="#" class="tag" data-filter="sostenibilidad">Sostenibilidad</a>
                         </div>
                     </div>
-                </article>
-
-                <!-- Card 5 -->
-                <article class="article-card" id="article-5">
-                    <div class="card-header">
-                        <div class="card-category">Tecnología</div>
-                        <h3 class="card-title">El papel de la inteligencia artificial en la optimización de campos petroleros</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Javier Torres</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 18, 2025</span>
-                        </div>
-                        <p class="card-excerpt">La IA está transformando la forma en que se gestionan los campos petroleros. Descubre cómo estas tecnologías pueden mejorar la eficiencia, reducir costos y optimizar la producción en campos maduros.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 5 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-5')">Leer más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Card 6 -->
-                <article class="article-card" id="article-6">
-                    <div class="card-header">
-                        <div class="card-category">Ecuador</div>
-                        <h3 class="card-title">La erosión regresiva del río Coca: Impacto en la infraestructura petrolera</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="card-author"><i class="fas fa-user"></i> Carlos Méndez</span>
-                            <span class="card-date"><i class="fas fa-calendar"></i> Abril 15, 2025</span>
-                        </div>
-                        <p class="card-excerpt">Este extraño fenómeno geológico ha causado graves daños a la infraestructura petrolera ecuatoriana. Analizamos su evolución, impacto y las medidas de mitigación implementadas para proteger oleoductos críticos.</p>
-                        <div class="card-footer">
-                            <span class="reading-time"><i class="fas fa-clock"></i> 4 min de lectura</span>
-                            <a href="#" class="card-link" onclick="openArticle('article-6')">Leer más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#" class="page-item active">1</a>
-                <a href="#" class="page-item">2</a>
-                <a href="#" class="page-item">3</a>
-                <a href="#" class="page-item">4</a>
-                <a href="#" class="page-item next">Siguiente <i class="fas fa-chevron-right"></i></a>
+                </div>
             </div>
         </section>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title">Suscríbete a nuestro boletín</h2>
-                <p class="newsletter-text">Recibe análisis exclusivos, tendencias del mercado y actualizaciones directamente en tu bandeja de entrada.</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
-                    <button type="submit" class="newsletter-button">Suscribirse</button>
-                </form>
+        <section id="featured-article" class="featured-article enhanced-featured" data-aos="fade-up">
+            <div class="container">
+                <article class="main-article" id="article-destacado">
+                    <div class="article-image">
+                        <img src="img/blog/crisis-produccion-ecuador.jpg" alt="Producción petrolera en Ecuador">
+                        <div class="article-overlay"></div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="category">Producción</span>
+                            <span class="date">3 Mayo, 2025</span>
+                            <span class="reading-time"><i class="far fa-clock"></i> 1 min</span>
+                            <span class="views"><i class="far fa-eye"></i> 1,428 lecturas</span>
+                        </div>
+                        <h2 class="article-title">Crisis de producción petrolera en Ecuador 2025: Causas y perspectivas de recuperación</h2>
+                        <div class="article-excerpt">
+                            <p class="attention-grabber"><span class="highlight-text">Ecuador está viviendo su peor crisis petrolera del siglo.</span> Con niveles de producción similares a 2003, el país sudamericano enfrenta una catástrofe económica que demanda acción inmediata.</p>
+                            
+                            <div class="article-full-content">
+                                <p>El desplome en la producción, agravado por el cierre del bloque ITT, ha generado un déficit fiscal estimado en $2,500 millones anuales. Esta situación debilita la sostenibilidad financiera del Estado ecuatoriano y su capacidad para honrar compromisos internacionales.</p>
+                                
+                                <p>Desde una perspectiva gerencial, el diagnóstico es claro: <strong>deficiente planificación estratégica</strong>, inversión insuficiente en mantenimiento de campos maduros, y ausencia de políticas para atraer capital extranjero han convergido en esta tormenta perfecta.</p>
+                                
+                                <h3>Estrategias prioritarias para una recuperación sostenible:</h3>
+                                
+                                <ul class="strategic-solutions">
+                                    <li><span class="solution-number">01</span> <strong>Reingeniería operativa:</strong> Optimización inmediata de campos maduros con tecnologías de recuperación mejorada, potencialmente recuperando 25,000 barriles diarios en 6 meses.</li>
+                                    <li><span class="solution-number">02</span> <strong>Asociaciones público-privadas:</strong> Marco regulatorio claro para atraer $1,200 millones en inversión internacional destinada a exploración en bloques surorientales.</li>
+                                    <li><span class="solution-number">03</span> <strong>Transformación digital:</strong> Implementación de gemelos digitales y análisis predictivo para reducir tiempo improductivo y optimizar procesos, con retorno estimado del 18% sobre inversión.</li>
+                                </ul>
+                                
+                                <div class="key-insight">
+                                    <p>La crisis actual representa tanto un desafío existencial como una oportunidad única para modernizar el sector petrolero ecuatoriano. ¿Podrán los líderes actuales implementar las reformas estructurales necesarias antes de que sea demasiado tarde?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-footer">
+                            <div class="author">
+                                <img src="img/authors/benito-cabrera.jpg" alt="Benito Cabrera">
+                                <div class="author-info">
+                                    <span class="author-name">Benito Cabrera</span>
+                                    <span class="author-title">Director de Análisis Estratégico</span>
+                                </div>
+                            </div>
+                            <div class="share">
+                                <span class="share-text">Compartir:</span>
+                                <a href="#" title="Compartir en Twitter" class="share-btn twitter-share"><i class="fab fa-twitter"></i></a>
+                                <a href="#" title="Compartir en LinkedIn" class="share-btn linkedin-share"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" title="Compartir en WhatsApp" class="share-btn whatsapp-share"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#" title="Compartir por correo" class="share-btn email-share"><i class="far fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- Articles by Topic -->
-        <section class="topics-section">
-            <h2 class="section-title">Explorar por temas</h2>
-            <div class="topics-grid">
-                <a href="#" class="topic-card" data-category="ecuador">
-                    <span class="topic-icon"><i class="fas fa-flag"></i></span>
-                    <h3 class="topic-title">Industria Ecuatoriana</h3>
-                    <span class="topic-count">8 artículos</span>
-                </a>
-                <a href="#" class="topic-card" data-category="global">
-                    <span class="topic-icon"><i class="fas fa-globe"></i></span>
-                    <h3 class="topic-title">Mercado Global</h3>
-                    <span class="topic-count">6 artículos</span>
-                </a>
-                <a href="#" class="topic-card" data-category="tecnologia">
-                    <span class="topic-icon"><i class="fas fa-microchip"></i></span>
-                    <h3 class="topic-title">Tecnología e Innovación</h3>
-                    <span class="topic-count">5 artículos</span>
-                </a>
-                <a href="#" class="topic-card" data-category="economia">
-                    <span class="topic-icon"><i class="fas fa-chart-line"></i></span>
-                    <h3 class="topic-title">Economía y Finanzas</h3>
-                    <span class="topic-count">4 artículos</span>
-                </a>
-                <a href="#" class="topic-card" data-category="sostenibilidad">
-                    <span class="topic-icon"><i class="fas fa-leaf"></i></span>
-                    <h3 class="topic-title">Sostenibilidad</h3>
-                    <span class="topic-count">3 artículos</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Featured Author -->
-        <section class="featured-author">
-            <img src="img/author.jpg" alt="Carlos Méndez" class="author-image">
-            <div class="author-details">
-                <h3 class="author-name">Carlos Méndez</h3>
-                <p class="author-bio">Analista senior de la industria petrolera con más de 15 años de experiencia. Especialista en mercados energéticos, economía de hidrocarburos y políticas públicas del sector. Ex consultor de Petroecuador y asesor en proyectos internacionales.</p>
-                <div class="author-social">
-                    <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon email"><i class="fas fa-envelope"></i></a>
+        <section id="all-articles" class="blog-grid enhanced-grid" data-aos="fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Análisis <span class="highlight">Recientes</span></h2>
+                    <p class="section-subtitle">Perspectivas estratégicas del sector petrolero nacional e internacional</p>
                 </div>
-                <div class="author-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">12</span>
-                        <span class="stat-label">Artículos</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">15K</span>
-                        <span class="stat-label">Lectores</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4.9</span>
-                        <span class="stat-label">Valoración</span>
-                    </div>
+                
+                <div class="articles-grid" id="articles-container">
+                    <!-- Los artículos se cargarán dinámicamente mediante JavaScript -->
+                </div>
+
+                <div class="blog-pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span>...</span>
+                    <a href="#">Siguiente &raquo;</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" data-aos="fade-up">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Suscríbete a nuestro boletín</h2>
+                    <p>Recibe los análisis más actualizados y tendencias del sector petrolero directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Article Modal -->
-    <div class="article-modal" id="article-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeArticle()">&times;</button>
-            <div id="modal-content-container">
-                <!-- Contenido del artículo se cargará aquí dinámicamente -->
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>Email: <a href="mailto:info@oilmaster.ec">info@oilmaster.ec</a></p>
-                <p>WhatsApp: <a href="https://wa.me/593996719754">+593 996-71-9754</a></p>
-            </div>
-            <div class="footer-section">
-                <h3>Redes Sociales</h3>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/benito-cabrera-r/" target="_blank">LinkedIn</a>
-                    <a href="https://twitter.com/benitocabrera" target="_blank">Twitter</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>OilMaster</h2>
+                    <p>Soluciones tecnológicas para la industria petrolera</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="precio.html">Precio WTI</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#services">Servicios</a></li>
+                        <li><a href="index.html#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. 6 de Diciembre y La Niña, Quito, Ecuador</p>
+                    <p><i class="fas fa-phone"></i> +593 99 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@oilmaster.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-section">
-                <p>&copy; 2025 OilMaster - Creado por Ing. Benito Cabrera R., MBA</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OilMaster. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="js/blog.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/blog-enhanced.js"></script>
 </body>
 </html>
